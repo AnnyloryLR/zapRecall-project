@@ -5,14 +5,14 @@ import CARDS from "./MockData"
 function Deck(){
     return(
         <Cards>
-            <Flashcard />
+            {CARDS.map((card, index)=> <Flashcard question ={card.question}  answer={card.answer} index={index} key={card.question}/>)}
         </Cards>
     )
 }
 
 
 export default Deck 
-//console.log(CARDS)
+
 
 const Cards = styled.div`
     width:100%;

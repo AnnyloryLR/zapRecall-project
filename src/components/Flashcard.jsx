@@ -1,24 +1,46 @@
 import styled from "styled-components"
 import arrowhead from "../images/seta_play.png"
 import turn from "../images/seta_virar.png"
+import React from "react"
 
-function Flashcard (){
+
+function Flashcard ({question, answer, index}){
+    
+    const [clicked, setClicked] = React.useState("enabled");
+    const [show, setShow] = React.useState("none");
+    const [response, setResponse] = React.useState("none");
+
+
+    function showQuestion(){
+        if(clicked === "enabled"){
+            setClicked("none");
+            setShow("enabled");
+        }
+    }
+
+    function showAnswer(){
+        if(show === "enabled"){
+            setShow("none");
+            setResponse("enabled");
+        }
+    }
+  
     return(
         <>
-        <Card>
-           <p>Pergunta 1</p> <img src={arrowhead}></img> 
-        </Card>
-        <Question>
-            <p>O que é JSX?</p> <img src={turn} />
-        </Question>
-        <Answer>
-            <p>JSX é uma sintaxe para escrever HTML dentro do JS</p> 
-            <div>
-                <button>Não lembrei</button>
-                <button>Quase não lembrei</button> 
-                <button>Zap!</button>
-            </div>
-        </Answer>
+            <Card clicked ={clicked}>
+                <p>Pergunta {index + 1}</p> <img onClick={showQuestion} src={arrowhead}></img> 
+            </Card>
+            <Question show={show}>
+                <p>{question}</p> <img onClick={showAnswer}src={turn} />
+            </Question>
+            <Answer response={response}>
+                <p>{answer}</p> 
+                <div>
+                    <button>Não lembrei</button>
+                    <button>Quase não lembrei</button> 
+                    <button>Zap!</button>
+                </div>
+            </Answer>
         </>
     )
 }
@@ -34,12 +56,10 @@ const Card = styled.li `
     align-items:center;
     justify-content:space-between;
     border-radius:5px;
-    list-style-position: none;
-    margin-top:25px;
-    margin-left:0;
-    margin-bottom:0;
-    margin-right:0;
-    //display:none;
+    list-style-position:none;
+    margin-bottom:25px;
+    display:${props => props.clicked};
+    
     p{
         font-family:"Recursive";
         font-weight:700;
@@ -55,13 +75,14 @@ const Card = styled.li `
 
 const Question = styled.div`
     width:299px;
-    height:131px;
+    min-height:131px;
     display:flex;
     flex-direction:column;
     position:relative;
     background-color:#FFFFD4;
     border-radius:5px;
-    //display:none;
+    margin-bottom:25px;
+    display:${props => props.show};
     img{
         width:30px;
         height:20px;
@@ -80,12 +101,15 @@ const Question = styled.div`
 
 const Answer = styled.div`
     width:299px;
-    height:131px;
+   
     display:flex;
     flex-direction:column;
+    align-items:center;
     position:relative;
     background-color:#FFFFD4;
     border-radius:5px;
+    margin-bottom:25px;
+    display:${props => props.response};
     img{
         width:30px;
         height:20px;
@@ -94,10 +118,12 @@ const Answer = styled.div`
         right:15px;
     }
     p{
-        margin-left:15px;
+        width:90%;
         font-family:"Recursive";
         font-size:18px;
         font-weight:400;
+        text-align: center;
+        word-break:break-word;
 
     }
     div{
@@ -110,8 +136,10 @@ const Answer = styled.div`
         height:37px;
         border:none;
         border-radius:5px;
+        margin-bottom:10px;
         font-family:"Recursive";
         color:#FFFFFF;
+       
 
     }
     button:nth-child(1){
