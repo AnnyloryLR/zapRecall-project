@@ -2,15 +2,21 @@ import styled from "styled-components"
 import arrowhead from "../images/seta_play.png"
 import turn from "../images/seta_virar.png"
 import React from "react"
+import wrong from "../images/icone_erro.png"
+import almost from "../images/icone_quase.png"
+import correct from "../images/icone_certo.png"
 
+function Flashcard ({question, answer, index, setCounter, counter}){
 
-function Flashcard ({question, answer, index}){
-    
     const [clicked, setClicked] = React.useState("enabled");
     const [show, setShow] = React.useState("none");
     const [response, setResponse] = React.useState("none");
-
-
+    const [answer_icon, setAnswerIcon] = React.useState(arrowhead);
+    const [finished, setFinished] = React.useState("none");
+    const [color, setColor] = React.useState("black")
+    
+   
+  
     function showQuestion(){
         if(clicked === "enabled"){
             setClicked("none");
@@ -24,21 +30,53 @@ function Flashcard ({question, answer, index}){
             setResponse("enabled");
         }
     }
+
+    function gotWrong(){
+         setResponse("none");
+         setClicked("enabled");
+         setAnswerIcon(wrong);
+         setFinished("line-through");
+         setColor("#FF3030");
+         setCounter(counter + 1);
+
+    }
+
+    function almostGot(){
+        setResponse("none");
+        setClicked("enabled");
+        setAnswerIcon(almost);
+        setFinished("line-through");
+        setColor("#FF922E");
+        setCounter(counter + 1);
+
+    }
+
+    function gotRight(){
+        setResponse("none");
+        setClicked("enabled");
+        setAnswerIcon(correct);
+        setFinished("line-through");
+        setColor("#2FBE34");
+        setCounter(counter + 1);
+    }
+
+    
+
   
     return(
         <>
-            <Card clicked ={clicked}>
-                <p>Pergunta {index + 1}</p> <img onClick={showQuestion} src={arrowhead}></img> 
+            <Card clicked ={clicked} finished={finished} color={color}>
+                <p>Pergunta {index + 1}</p> <img onClick={showQuestion} src={answer_icon}></img> 
             </Card>
             <Question show={show}>
-                <p>{question}</p> <img onClick={showAnswer}src={turn} />
+                <p>{question}</p> <img onClick={showAnswer} src={turn} />
             </Question>
-            <Answer response={response}>
+            <Answer response={response} >
                 <p>{answer}</p> 
                 <div>
-                    <button>Não lembrei</button>
-                    <button>Quase não lembrei</button> 
-                    <button>Zap!</button>
+                    <button id="red" onClick={gotWrong}>Não lembrei</button>
+                    <button id="orange" onClick={almostGot}>Quase não lembrei</button> 
+                    <button id="green" onClick={gotRight}>Zap!</button>
                 </div>
             </Answer>
         </>
@@ -64,8 +102,9 @@ const Card = styled.li `
         font-family:"Recursive";
         font-weight:700;
         font-size:16px;
-        color:#333333;
+        color:${props => props.color};
         margin-left:15px;
+        text-decoration:${props => props.finished}
     }
     img{
         margin-right:22px;

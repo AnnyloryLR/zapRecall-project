@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import Counter from "./Counter"
 import Deck from "./Deck"
 import Top from "./Top"
 
@@ -8,7 +7,6 @@ function Container(){
         <Page>
             <Top />
             <Deck />
-            <Counter />
         </Page>
     )
 }
