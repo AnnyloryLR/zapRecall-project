@@ -18,10 +18,11 @@ const Logo = styled.div `
     align-items: center;
     margin-top:42px;
     margin-bottom:30px;
+    box-sizing:border-box;
     h1 {
         font-family: "Righteous";
         color: #FFFFFF;
-        font-size:36px;
+        font-size:46px;
         font-weight:400;
     }
     img{

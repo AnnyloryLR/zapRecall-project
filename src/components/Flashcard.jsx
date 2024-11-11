@@ -87,15 +87,16 @@ function Flashcard ({question, answer, index, setCounter, counter}){
 export default Flashcard
 
 const Card = styled.li `
+    width:80%;
+    min-height:13%;
     background-color:#FFFFFF;
-    width:300px;
-    height:65px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     border-radius:5px;
     list-style-position:none;
     margin-bottom:25px;
+    box-sizing:border-box;
     display:${props => props.clicked};
     
     p{
@@ -121,6 +122,7 @@ const Question = styled.div`
     background-color:#FFFFD4;
     border-radius:5px;
     margin-bottom:25px;
+    box-sizing:border-box;
     display:${props => props.show};
     img{
         width:30px;
@@ -148,6 +150,7 @@ const Answer = styled.div`
     background-color:#FFFFD4;
     border-radius:5px;
     margin-bottom:25px;
+    box-sizing:border-box;
     display:${props => props.response};
     img{
         width:30px;

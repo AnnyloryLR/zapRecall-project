@@ -29,14 +29,13 @@ export default Deck
 
 const Cards = styled.div`
     width:100%;
-    height:470px;
+    height:63%;
     display:flex;
     flex-direction:column;
     align-items:center;
     overflow-y:scroll;
     list-style:none;
+    box-sizing:border-box;
     margin:0;
-    
-
    
 `

@@ -4,19 +4,20 @@ import Container from "./components/Container"
 function App() {
 
   return (
-    <CenterPage>
-        <Container />
-    </CenterPage>
+    <Center>
+      <Container />
+    </Center>
   )
 }
 
 export default App
 
 
-const CenterPage = styled.div `
-  height:100wh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color:#e5e5e5;
+const Center = styled.div`
+  min-height:100vh;
+  min-width:100vw;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 `
+
