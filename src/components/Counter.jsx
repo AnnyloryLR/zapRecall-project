@@ -14,7 +14,7 @@ export default Counter
 
 const Bottom = styled.div`
     height:10%;
-    width:100%;
+    width:27rem;
     display:flex;
     justify-content:center;
     align-content:center;

@@ -114,7 +114,7 @@ const Card = styled.li `
 `
 
 const Question = styled.div`
-    width:299px;
+    width:80%;
     min-height:131px;
     display:flex;
     flex-direction:column;
@@ -141,8 +141,7 @@ const Question = styled.div`
 `
 
 const Answer = styled.div`
-    width:299px;
-   
+    width:80%;
     display:flex;
     flex-direction:column;
     align-items:center;
