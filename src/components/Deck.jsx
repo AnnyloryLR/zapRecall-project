@@ -34,6 +34,9 @@ const Cards = styled.div`
     flex-direction:column;
     align-items:center;
     overflow-y:scroll;
+    &::-webkit-scrollbar{
+        display:none;
+    }
     list-style:none;
     box-sizing:border-box;
     margin:0;
