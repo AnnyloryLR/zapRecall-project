@@ -18,7 +18,7 @@ function Deck(){
               setCounter={setCounter}
               />)}
         </Cards >
-        <Counter counter={counter}/>
+        <Counter counter={counter} objectLength={CARDS.length}/>
     </> 
    )
 }

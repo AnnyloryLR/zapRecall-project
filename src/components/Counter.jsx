@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-function Counter ({counter}){
+function Counter ({counter, objectLength}){
     return(
         <Bottom>
-            <p>{counter}/8 CONCLUÍDOS</p>
+            <p>{counter}/ {objectLength}</p>
         </Bottom>
     )
 }
