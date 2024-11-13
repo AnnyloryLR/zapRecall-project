@@ -16,7 +16,7 @@ export default Container
 
 
 const Page = styled.div `
-    width:27rem;
+    width:100vw;
     height:100vh;
     display:flex;
     flex-direction:column;
